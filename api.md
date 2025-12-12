@@ -21,6 +21,38 @@
 - **Cookie**:
   `X-JWT-Token`: 包含 Bearer Token，格式为 `Bearer <token>`，用于作为后续请求自动携带的 `Authorization` 头。
 
+### 登出
+
+- **URL**：`/auth/logout`
+- **方法**：`POST`
+- **请求头**：
+  | 键 | 值 | 是否必填 |
+  | --- | --- | --- |
+  | Content-Type | application/json | 是 |
+  | Authorization | Bearer \<token\>，其中的 \<token\> 为 [登录](#登录) 响应体中的 `X-JWT-Token` 值 | 是 |
+- **响应体**：`json` 格式
+  | 参数 | 类型 | 描述 |
+  | --- | --- | --- |
+  | message | string | 仅登出成功时包含，值为 `logout success` |
+  | error | string | 仅登出失败时包含，值为具体错误信息 |
+
+### 获取用户信息
+
+- **URL**：`/auth/info`
+- **方法**：`GET`
+- **请求头**：
+  | 键 | 值 | 是否必填 |
+  | --- | --- | --- |
+  | Content-Type | application/json | 是 |
+  | Authorization | Bearer \<token\>，其中的 \<token\> 为 [登录](#登录) 响应体中的 `X-JWT-Token` 值 | 是 |
+- **响应体**：`json` 格式
+  | 参数 | 类型 | 描述 |
+  | --- | --- | --- |
+  | username | string | 用户名 |
+  | realname | string | 真实姓名 |
+  | role | integer | 用户角色，0 为普通用户，1 为管理员 |
+  | status | integer | 用户状态，0 为正常，1 为禁用 |
+
 ## OJ 控制台相关
 
 所有的 OJ 控制台相关 API 都需要遵循以下规则：
@@ -666,7 +698,7 @@
   | cmd | string | 是 | 指定为 `GetCompetitionList` |
   | page | integer | 是 | 指定要获取的页码，最小值为 1 |
   | page_size | integer | 是 | 指定每页返回的比赛数量，最小值为 10，最大值为 100 |
-  | status | integer | 否 | 指定查询的比赛状态，0 为未发布，1 为已发布，2为已删除 |
+  | status | integer | 否 | 指定查询的比赛状态，0 为未发布，1 为已发布，2 为已删除 |
 - **响应体**：`json` 格式
   | 参数 | 类型 | 描述 |
   | --- | --- | --- |
