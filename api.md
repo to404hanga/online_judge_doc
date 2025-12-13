@@ -142,16 +142,6 @@
 ### 获取题目列表
 
 - **方法**：`GET`
-- **请求体**：`json` 格式
-  | 参数 | 类型 | 是否必填 | 描述 |
-  | --- | --- | --- | --- |
-  | desc | boolean | 否 | 是否按 order_by 字段降序排序 |
-  | order_by | string | 否 | 排序字段，可选值为 `id`, `title`, `time_limit`, `memory_limit`，默认值为 `id` |
-  | title | string | 否 | 按题目标题全模糊匹配查询 |
-  | status | integer | 否 | 按题目状态精准查询，可选值为 `0`, `1`, `2`，分别为未发布，已发布，已删除 |
-  | visible | integer | 否 | 按非比赛期间题目是否可见精准查询，可选值为 `0`, `1`，分别为不可见，可见 |
-  | time_limit | integer | 否 | 按题目时间限制精准查询，单位为毫秒 |
-  | memory_limit | integer | 否 | 按题目内存限制精准查询，单位为 MB |
 - **请求头**：
   | 键 | 值 | 是否必填 |
   | --- | --- | --- |
@@ -163,6 +153,13 @@
   | cmd | string | 是 | 指定为 `GetProblemList` |
   | page | integer | 是 | 分页页码，最小值为 1 |
   | page_size | integer | 是 | 分页每页题目数量，取值范围为 [10, 100] |
+  | desc | boolean | 否 | 是否按 order_by 字段降序排序 |
+  | order_by | string | 否 | 排序字段，可选值为 `id`, `created_at`, `updated_at`，默认值为 `id` |
+  | title | string | 否 | 按题目标题全模糊匹配查询 |
+  | status | integer | 否 | 按题目状态精准查询，可选值为 `0`, `1`, `2`，分别为未发布，已发布，已删除 |
+  | visible | integer | 否 | 按非比赛期间题目是否可见精准查询，可选值为 `0`, `1`，分别为不可见，可见 |
+  | time_limit | integer | 否 | 按题目时间限制精准查询，单位为毫秒 |
+  | memory_limit | integer | 否 | 按题目内存限制精准查询，单位为 MB |
 - **响应体**：`json` 格式
   | 参数 | 类型 | 描述 |
   | --- | --- | --- |
