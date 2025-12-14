@@ -183,10 +183,6 @@
 ### 获取指定题目详情
 
 - **方法**：`GET`
-- **请求体**：`json` 格式
-  | 参数 | 类型 | 是否必填 | 描述 |
-  | --- | --- | --- | --- |
-  | problem_id | integer | 是 | 指定要查询的题目 ID |
 - **请求头**：
   | 键 | 值 | 是否必填 |
   | --- | --- | --- |
@@ -195,7 +191,8 @@
 - **查询参数**：
   | 参数 | 类型 | 是否必填 | 描述 |
   | --- | --- | --- | --- |
-  | cmd | string | 是 | 指定为 `GetProblemDetail` |
+  | cmd | string | 是 | 指定为 `GetProblem` |
+  | problem_id | integer | 是 | 指定要查询的题目 ID |
 - **响应体**：`json` 格式
   | 参数 | 类型 | 描述 |
   | --- | --- | --- |
@@ -210,7 +207,9 @@
   | data.memory_limit | integer | 题目内存限制，单位为 MB |
   | data.visible | integer | 非比赛期间题目是否可见，0 为不可见，1 为可见 |
   | data.creator_id | integer | 题目创建者 ID |
+  | data.creator_realname | string | 题目创建者真实姓名 |
   | data.updater_id | integer | 题目更新者 ID |
+  | data.updater_realname | string | 题目更新者真实姓名 |
   | data.created_at | string | 题目创建时间，格式为带毫秒的 `RFC3339` |
   | data.updated_at | string | 题目更新时间，格式为带毫秒的 `RFC3339` |
 
