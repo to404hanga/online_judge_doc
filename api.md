@@ -319,7 +319,7 @@
 - **请求体**：`json` 格式
   | 参数 | 类型 | 是否必填 | 描述 |
   | --- | --- | --- | --- |
-  | competition_id | integer | 是 | 指定要启用题目到的比赛 ID |
+  | competition_id | integer | 是 | 指定要启用题目的比赛 ID |
   | problem_ids | array | 是 | 要启用的题目 ID 列表 |
   | problem_ids[i] | integer | 是 | 第 i 个题目 ID |
 - **请求头**：
@@ -343,8 +343,8 @@
 - **请求体**：`json` 格式
   | 参数 | 类型 | 是否必填 | 描述 |
   | --- | --- | --- | --- |
-  | competition_id | integer | 是 | 指定要启用题目到的比赛 ID |
-  | problem_ids | array | 是 | 要启用的题目 ID 列表 |
+  | competition_id | integer | 是 | 指定要禁用题目的比赛 ID |
+  | problem_ids | array | 是 | 要禁用的题目 ID 列表 |
   | problem_ids[i] | integer | 是 | 第 i 个题目 ID |
 - **请求头**：
   | 键 | 值 | 是否必填 |
