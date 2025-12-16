@@ -245,7 +245,7 @@
 - **请求体**：`json` 格式
   | 参数 | 类型 | 是否必填 | 描述 |
   | --- | --- | --- | --- |
-  | competition_id | integer | 是 | 指定要更新的比赛 ID |
+  | id | integer | 是 | 指定要更新的比赛 ID |
   | name | string | 否 | 比赛名称 |
   | start_time | string | 否 | 比赛开始时间，格式为带毫秒的 `RFC3339` |
   | end_time | string | 否 | 比赛结束时间，格式为带毫秒的 `RFC3339` |
