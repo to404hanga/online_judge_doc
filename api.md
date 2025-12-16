@@ -718,3 +718,40 @@
   | data.list[i].updater_id | integer | 比赛更新者 ID |
   | data.list[i].created_at | string | 比赛创建时间，RFC3339 格式 |
   | data.list[i].updated_at | string | 比赛更新时间，RFC3339 格式 |
+
+### 获取比赛列表 - 普通用户用
+
+- **方法**：`GET`
+- **请求头**：
+  | 键 | 值 | 是否必填 |
+  | --- | --- | --- |
+  | Authorization | Bearer \<token\>，其中的 \<token\> 为 [登录](#登录) 响应体中的 `X-JWT-Token` 值 | 是 |
+- **查询参数**：
+  | 参数 | 类型 | 是否必填 | 描述 |
+  | --- | --- | --- | --- |
+  | cmd | string | 是 | 指定为 `UserGetCompetitionList` |
+  | page | integer | 是 | 指定要获取的页码，最小值为 1 |
+  | page_size | integer | 是 | 指定每页返回的比赛数量，最小值为 10，最大值为 100 |
+  | desc | boolean | 否 | 是否按创建时间降序排序，默认值为 `false` |
+  | order_by | string | 否 | 指定排序字段，默认值为 `id`, 可选值为 `id`, `start_time`, `end_time` |
+  | name | string | 否 | 比赛名称，模糊查询 |
+- **响应体**：`json` 格式
+  | 参数 | 类型 | 描述 |
+  | --- | --- | --- |
+  | code | integer | 状态码 |
+  | message | string | 状态描述 |
+  | data | object | 返回数据，仅在成功时返回 |
+  | data.total | integer | 总数据量 |
+  | data.page | integer | 当前页码 |
+  | data.page_size | integer | 当前页最大数据量 |
+  | data.list | array | 比赛列表 |
+  | data.list[i] | object | 比赛列表中的第 i 个比赛 |
+  | data.list[i].id | integer | 比赛 ID |
+  | data.list[i].name | string | 比赛名称 |
+  | data.list[i].status | integer | 比赛状态, 0: 未发布, 1: 已发布, 2: 已删除 |
+  | data.list[i].start_time | string | 比赛开始时间，RFC3339 格式 |
+  | data.list[i].end_time | string | 比赛结束时间，RFC3339 格式 |
+  | data.list[i].creator_id | integer | 比赛创建者 ID |
+  | data.list[i].updater_id | integer | 比赛更新者 ID |
+  | data.list[i].created_at | string | 比赛创建时间，RFC3339 格式 |
+  | data.list[i].updated_at | string | 比赛更新时间，RFC3339 格式 |
