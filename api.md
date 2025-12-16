@@ -681,7 +681,7 @@
   | data.memory_used | integer | 最晚提交记录的内存使用, 单位为 MB |
   | data.created_at | string | 最晚提交记录的提交时间，RFC3339 格式 |
 
-### 获取比赛列表
+### 获取比赛列表 - 管理员用
 
 - **方法**：`GET`
 - **请求头**：
@@ -694,6 +694,8 @@
   | cmd | string | 是 | 指定为 `GetCompetitionList` |
   | page | integer | 是 | 指定要获取的页码，最小值为 1 |
   | page_size | integer | 是 | 指定每页返回的比赛数量，最小值为 10，最大值为 100 |
+  | desc | boolean | 否 | 是否按创建时间降序排序，默认值为 `false` |
+  | order_by | string | 否 | 指定排序字段，默认值为 `id`, 可选值为 `id`, `start_time`, `end_time`, `created_at`, `updated_at` |
   | status | integer | 否 | 指定查询的比赛状态，0 为未发布，1 为已发布，2 为已删除 |
 - **响应体**：`json` 格式
   | 参数 | 类型 | 描述 |
