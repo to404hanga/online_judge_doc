@@ -697,6 +697,7 @@
   | desc | boolean | 否 | 是否按创建时间降序排序，默认值为 `false` |
   | order_by | string | 否 | 指定排序字段，默认值为 `id`, 可选值为 `id`, `start_time`, `end_time`, `created_at`, `updated_at` |
   | status | integer | 否 | 指定查询的比赛状态，0 为未发布，1 为已发布，2 为已删除 |
+  | phase | integer | 否 | 指定查询的比赛阶段，0 为未开始，1 为进行中，2 为已结束 |
   | name | string | 否 | 比赛名称，模糊查询 |
 - **响应体**：`json` 格式
   | 参数 | 类型 | 描述 |
@@ -734,6 +735,7 @@
   | page_size | integer | 是 | 指定每页返回的比赛数量，最小值为 10，最大值为 100 |
   | desc | boolean | 否 | 是否按创建时间降序排序，默认值为 `false` |
   | order_by | string | 否 | 指定排序字段，默认值为 `id`, 可选值为 `id`, `start_time`, `end_time` |
+  | phase | integer | 否 | 指定查询的比赛阶段，0 为未开始，1 为进行中，2 为已结束 |
   | name | string | 否 | 比赛名称，模糊查询 |
 - **响应体**：`json` 格式
   | 参数 | 类型 | 描述 |
