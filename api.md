@@ -757,3 +757,30 @@
   | data.list[i].updater_id | integer | 比赛更新者 ID |
   | data.list[i].created_at | string | 比赛创建时间，RFC3339 格式 |
   | data.list[i].updated_at | string | 比赛更新时间，RFC3339 格式 |
+
+### 获取比赛题目列表 - 管理员用
+
+- **方法**：`GET`
+- **请求头**：
+  | 键 | 值 | 是否必填 |
+  | --- | --- | --- |
+  | Authorization | Bearer \<token\>，其中的 \<token\> 为 [登录](#登录) 响应体中的 `X-JWT-Token` 值 | 是 |
+- **查询参数**：
+  | 参数 | 类型 | 是否必填 | 描述 |
+  | --- | --- | --- | --- |
+  | cmd | string | 是 | 指定为 `GetCompetitionProblemList` |
+  | competition_id | integer | 是 | 指定要获取的比赛 ID |
+- **响应体**：`json` 格式
+  | 参数 | 类型 | 描述 |
+  | --- | --- | --- |
+  | code | integer | 状态码 |
+  | message | string | 状态描述 |
+  | data | array | 返回数据，仅在成功时返回 |
+  | data[i] | object | 比赛题目列表中的第 i 个题目 |
+  | data[i].id | integer | 比赛题目 ID |
+  | data[i].competition_id | integer | 比赛 ID |
+  | data[i].problem_id | integer | 题目 ID |
+  | data[i].problem_title | string | 题目标题 |
+  | data[i].status | integer | 比赛题目状态, 0: 禁用, 1: 启用 |
+  | data[i].created_at | string | 比赛题目创建时间，RFC3339 格式 |
+  | data[i].updated_at | string | 比赛题目更新时间，RFC3339 格式 |
