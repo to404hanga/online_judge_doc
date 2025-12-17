@@ -306,7 +306,7 @@
 - **查询参数**：
   | 参数 | 类型 | 是否必填 | 描述 |
   | --- | --- | --- | --- |
-  | cmd | string | 是 | 指定为 `DeleteCompetitionProblem` |
+  | cmd | string | 是 | 指定为 `RemoveCompetitionProblem` |
 - **响应体**：`json` 格式
   | 参数 | 类型 | 描述 |
   | --- | --- | --- |
@@ -784,3 +784,33 @@
   | data[i].status | integer | 比赛题目状态, 0: 禁用, 1: 启用 |
   | data[i].created_at | string | 比赛题目创建时间，RFC3339 格式 |
   | data[i].updated_at | string | 比赛题目更新时间，RFC3339 格式 |
+
+### 获取比赛详情 - 管理员用
+
+- **方法**：`GET`
+- **请求头**：
+  | 键 | 值 | 是否必填 |
+  | --- | --- | --- |
+  | Authorization | Bearer \<token\>，其中的 \<token\> 为 [登录](#登录) 响应体中的 `X-JWT-Token` 值 | 是 |
+- **查询参数**：
+  | 参数 | 类型 | 是否必填 | 描述 |
+  | --- | --- | --- | --- |
+  | cmd | string | 是 | 指定为 `GetCompetition` |
+  | competition_id | integer | 是 | 指定要获取的比赛 ID |
+- **响应体**：`json` 格式
+  | 参数 | 类型 | 描述 |
+  | --- | --- | --- |
+  | code | integer | 状态码 |
+  | message | string | 状态描述 |
+  | data | object | 返回数据，仅在成功时返回 |
+  | data.id | integer | 比赛 ID |
+  | data.name | string | 比赛名称 |
+  | data.status | integer | 比赛状态, 0: 未发布, 1: 已发布, 2: 已删除 |
+  | data.start_time | string | 比赛开始时间，RFC3339 格式 |
+  | data.end_time | string | 比赛结束时间，RFC3339 格式 |
+  | data.creator_id | integer | 比赛创建者 ID |
+  | data.updater_id | integer | 比赛更新者 ID |
+  | data.created_at | string | 比赛创建时间，RFC3339 格式 |
+  | data.updated_at | string | 比赛更新时间，RFC3339 格式 |
+  | data.creator_realname | string | 比赛创建者真实姓名 |
+  | data.updater_realname | string | 比赛更新者真实姓名 |
