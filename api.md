@@ -841,7 +841,6 @@
   | --- | --- | --- | --- |
   | user_id | integer | 是 | 指定要更新的用户 ID |
   | realname | string | 否 | 用户真实姓名 |
-  | password | string | 否 | 用户密码 |
   | status | integer | 否 | 用户状态, 0: 正常, 1: 禁用 |
 - **请求头**：
   | 键 | 值 | 是否必填 |
