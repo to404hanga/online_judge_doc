@@ -505,15 +505,6 @@
 ### 获取用户列表
 
 - **方法**：`GET`
-- **请求体**：`json` 格式
-  | 参数 | 类型 | 是否必填 | 描述 |
-  | --- | --- | --- | --- |
-  | order_by | string | 否 | 排序字段，仅支持 `id`、`username`、`realname`，默认为 `id` |
-  | desc | boolean | 否 | 是否降序排序，默认为 `false` |
-  | username | string | 否 | 按学号查询，前缀匹配 |
-  | realname | string | 否 | 按真实姓名查询，全模糊匹配 |
-  | role | integer | 否 | 按角色查询，`0` 表示普通用户，`1` 表示管理员 |
-  | status | integer | 否 | 按状态查询，`0` 表示正常，`1` 表示禁用 |
 - **请求头**：
   | 键 | 值 | 是否必填 |
   | --- | --- | --- |
@@ -525,6 +516,12 @@
   | cmd | string | 是 | 指定为 `GetUserList` |
   | page | integer | 是 | 页码，最小值为 `1` |
   | page_size | integer | 是 | 每页数量，取值范围为 [1, 100]，默认为 `10` |
+  | order_by | string | 否 | 排序字段，仅支持 `id`、`username`、`realname`，默认为 `id` |
+  | desc | boolean | 否 | 是否降序排序，默认为 `false` |
+  | username | string | 否 | 按学号查询，前缀匹配 |
+  | realname | string | 否 | 按真实姓名查询，全模糊匹配 |
+  | role | integer | 否 | 按角色查询，`0` 表示普通用户，`1` 表示管理员 |
+  | status | integer | 否 | 按状态查询，`0` 表示正常，`1` 表示禁用 |
 - **响应体**：`json` 格式
   | 参数 | 类型 | 描述 |
   | --- | --- | --- |
