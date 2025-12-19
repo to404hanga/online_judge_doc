@@ -811,3 +811,48 @@
   | data.updated_at | string | 比赛更新时间，RFC3339 格式 |
   | data.creator_realname | string | 比赛创建者真实姓名 |
   | data.updater_realname | string | 比赛更新者真实姓名 |
+
+### 删除用户
+
+- **方法**：`DELETE`
+- **请求体**：`json` 格式
+  | 参数 | 类型 | 是否必填 | 描述 |
+  | --- | --- | --- | --- |
+  | user_id | integer | 是 | 指定要删除的用户 ID |
+- **请求头**：
+  | 键 | 值 | 是否必填 |
+  | --- | --- | --- |
+  | Authorization | Bearer \<token\>，其中的 \<token\> 为 [登录](#登录) 响应体中的 `X-JWT-Token` 值 | 是 |
+- **查询参数**：
+  | 参数 | 类型 | 是否必填 | 描述 |
+  | --- | --- | --- | --- |
+  | cmd | string | 是 | 指定为 `DeleteUser` |
+- **响应体**：`json` 格式
+  | 参数 | 类型 | 描述 |
+  | --- | --- | --- |
+  | code | integer | 状态码 |
+  | message | string | 状态描述 |
+
+### 更新用户
+
+- **方法**：`PUT`
+- **请求体**：`json` 格式
+  | 参数 | 类型 | 是否必填 | 描述 |
+  | --- | --- | --- | --- |
+  | user_id | integer | 是 | 指定要更新的用户 ID |
+  | realname | string | 否 | 用户真实姓名 |
+  | password | string | 否 | 用户密码 |
+  | status | integer | 否 | 用户状态, 0: 正常, 1: 禁用 |
+- **请求头**：
+  | 键 | 值 | 是否必填 |
+  | --- | --- | --- |
+  | Authorization | Bearer \<token\>，其中的 \<token\> 为 [登录](#登录) 响应体中的 `X-JWT-Token` 值 | 是 |
+- **查询参数**：
+  | 参数 | 类型 | 是否必填 | 描述 |
+  | --- | --- | --- | --- |
+  | cmd | string | 是 | 指定为 `UpdateUser` |
+- **响应体**：`json` 格式
+  | 参数 | 类型 | 描述 |
+  | --- | --- | --- |
+  | code | integer | 状态码 |
+  | message | string | 状态描述 |
