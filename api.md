@@ -877,7 +877,6 @@
   | code | integer | 状态码 |
   | message | string | 状态描述 |
 
-
 ### 更新用户密码
 
 - **方法**：`PUT`
