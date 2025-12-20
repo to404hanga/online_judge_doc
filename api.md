@@ -899,3 +899,40 @@
   | --- | --- | --- |
   | code | integer | 状态码 |
   | message | string | 状态描述 |
+
+### 获取参赛用户列表
+
+- **方法**：`GET`
+- **请求头**：
+  | 键 | 值 | 是否必填 |
+  | --- | --- | --- |
+  | Authorization | Bearer \<token\>，其中的 \<token\> 为 [登录](#登录) 响应体中的 `X-JWT-Token` 值 | 是 |
+- **查询参数**：
+  | 参数 | 类型 | 是否必填 | 描述 |
+  | --- | --- | --- | --- |
+  | cmd | string | 是 | 指定为 `GetCompetitionUserList` |
+  | competition_id | integer | 是 | 指定要获取参赛用户列表的比赛 ID |
+  | order_by | string | 否 | 排序字段, 可选值为 `id`, `username`, `realname`, 默认为 `id` |
+  | desc | boolean | 否 | 是否降序排序, 默认为 `false` |
+  | username | string | 否 | 筛选用户名包含指定字符串的用户, 前缀匹配查询 |
+  | realname | string | 否 | 筛选用户真实姓名包含指定字符串的用户, 模糊查询 |
+  | status | integer | 否 | 筛选用户状态, 0: 正常, 1: 禁用 |
+  | page | integer | 是 | 分页页码, 最小值为 `1` |
+  | page_size | integer | 否 | 分页每页数量, 最小值为 `10`, 最大值为 `100`, 默认为 `10` |
+- **响应体**：`json` 格式
+  | 参数 | 类型 | 描述 |
+  | --- | --- | --- |
+  | code | integer | 状态码 |
+  | message | string | 状态描述 |
+  | data | object | 响应数据 |
+  | data.total | integer | 符合条件的总用户数 |
+  | data.page | integer | 当前分页页码 |
+  | data.page_size | integer | 当前分页每页数量 |
+  | data.list | array | 参赛用户列表 |
+  | data.list[i] | object | 参赛用户信息 | 
+  | data.list[i].id | integer | 参赛 ID |
+  | data.list[i].competition_id | integer | 比赛 ID |
+  | data.list[i].user_id | integer | 用户 ID |
+  | data.list[i].username | string | 用户名 |
+  | data.list[i].realname | string | 用户真实姓名 |
+  | data.list[i].status | integer | 参赛状态, 0: 正常, 1: 禁用 |
