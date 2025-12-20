@@ -936,3 +936,26 @@
   | data.list[i].username | string | 用户名 |
   | data.list[i].realname | string | 用户真实姓名 |
   | data.list[i].status | integer | 参赛状态, 0: 正常, 1: 禁用 |
+
+### 创建用户
+
+- **方法**：`POST`
+- **请求体**：`json` 格式
+  | 参数 | 类型 | 是否必填 | 描述 |
+  | --- | --- | --- | --- |
+  | username | string | 是 | 用户名 |
+  | realname | string | 是 | 用户真实姓名 |
+  | role | integer | 是 | 用户角色, 0: 普通用户, 1: 管理员 |
+- **请求头**：
+  | 键 | 值 | 是否必填 |
+  | --- | --- | --- |
+  | Authorization | Bearer \<token\>，其中的 \<token\> 为 [登录](#登录) 响应体中的 `X-JWT-Token` 值 | 是 |
+- **查询参数**：
+  | 参数 | 类型 | 是否必填 | 描述 |
+  | --- | --- | --- | --- |
+  | cmd | string | 是 | 指定为 `CreateUser` |
+- **响应体**：`json` 格式
+  | 参数 | 类型 | 描述 |
+  | --- | --- | --- |
+  | code | integer | 状态码 |
+  | message | string | 状态描述 |
