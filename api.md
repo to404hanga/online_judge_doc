@@ -929,7 +929,7 @@
   | data.page | integer | 当前分页页码 |
   | data.page_size | integer | 当前分页每页数量 |
   | data.list | array | 参赛用户列表 |
-  | data.list[i] | object | 参赛用户信息 | 
+  | data.list[i] | object | 参赛用户信息 |
   | data.list[i].id | integer | 参赛 ID |
   | data.list[i].competition_id | integer | 比赛 ID |
   | data.list[i].user_id | integer | 用户 ID |
@@ -959,3 +959,51 @@
   | --- | --- | --- |
   | code | integer | 状态码 |
   | message | string | 状态描述 |
+
+### 用户获取比赛题目列表
+
+- **方法**：`GET`
+- **请求头**：
+  | 键 | 值 | 是否必填 |
+  | --- | --- | --- |
+  | Authorization | Bearer \<token\>，其中的 \<token\> 为 [登录](#登录) 响应体中的 `X-JWT-Token` 值 | 是 |
+  | X-Competition-JWT-Token | 具体值为 [开始比赛](#开始比赛) 响应头中的 `X-Competition-JWT-Token` 值 | 是 |
+- **查询参数**：
+  | 参数 | 类型 | 是否必填 | 描述 |
+  | --- | --- | --- | --- |
+  | cmd | string | 是 | 指定为 `UserGetCompetitionProblemList` |
+- **响应体**：`json` 格式
+  | 参数 | 类型 | 描述 |
+  | --- | --- | --- |
+  | code | integer | 状态码 |
+  | message | string | 状态描述 |
+  | data | array | 比赛题目列表 |
+  | data[i] | object | 比赛题目信息 |
+  | data[i].competition_id | integer | 比赛 ID |
+  | data[i].problem_id | integer | 题目 ID |
+  | data[i].problem_title | string | 题目标题 |
+
+### 用户获取比赛题目详情
+
+- **方法**：`GET`
+- **请求头**：
+  | 键 | 值 | 是否必填 |
+  | --- | --- | --- |
+  | Authorization | Bearer \<token\>，其中的 \<token\> 为 [登录](#登录) 响应体中的 `X-JWT-Token` 值 | 是 |
+  | X-Competition-JWT-Token | 具体值为 [开始比赛](#开始比赛) 响应头中的 `X-Competition-JWT-Token` 值 | 是 |
+- **查询参数**：
+  | 参数 | 类型 | 是否必填 | 描述 |
+  | --- | --- | --- | --- |
+  | cmd | string | 是 | 指定为 `UserGetCompetitionProblemDetail` |
+  | problem_id | integer | 是 | 指定要获取详情的题目 ID |
+- **响应体**：`json` 格式
+  | 参数 | 类型 | 描述 |
+  | --- | --- | --- |
+  | code | integer | 状态码 |
+  | message | string | 状态描述 |
+  | data | object | 题目详情 |
+  | data.id | integer | 题目 ID |
+  | data.title | string | 题目标题 |
+  | data.description | string | 题目描述 |
+  | data.time_limit | integer | 题目时间限制, 单位为毫秒 |
+  | data.memory_limit | integer | 题目内存限制, 单位为 MB |
