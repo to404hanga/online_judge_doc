@@ -1004,3 +1004,24 @@
   | data.description | string | 题目描述 |
   | data.time_limit | integer | 题目时间限制, 单位为毫秒 |
   | data.memory_limit | integer | 题目内存限制, 单位为 MB |
+
+### 检查用户是否通过某题目
+
+- **方法**：`GET`
+- **请求头**：
+  | 键 | 值 | 是否必填 |
+  | --- | --- | --- |
+  | Authorization | Bearer \<token\>，其中的 \<token\> 为 [登录](#登录) 响应体中的 `X-JWT-Token` 值 | 是 |
+  | X-Competition-JWT-Token | 具体值为 [开始比赛](#开始比赛) 响应头中的 `X-Competition-JWT-Token` 值 | 是 |
+- **查询参数**：
+  | 参数 | 类型 | 是否必填 | 描述 |
+  | --- | --- | --- | --- |
+  | cmd | string | 是 | 指定为 `CheckUserCompetitionProblemAccepted` |
+  | problem_id | integer | 是 | 指定要检查的题目 ID |
+- **响应体**：`json` 格式
+  | 参数 | 类型 | 描述 |
+  | --- | --- | --- |
+  | code | integer | 状态码 |
+  | message | string | 状态描述 |
+  | data | boolean | 是否通过该题目 |
+  
